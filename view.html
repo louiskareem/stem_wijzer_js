@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stem Wijzer</title>
+</head>
+<body>
+	<button onclick="prevPage(); return false;">Back</button>
+	<div id="title"></div>
+
+	<div id="statement"></div>
+
+	<button onclick="nextPage()">Eens</button>
+	<button onclick="nextPage()">Geen van beide</button>
+	<button onclick="nextPage()">Oneens</button>
+	<button onclick="">Sla deze vraag over</button>
+	<button onclick="nextPage()">Wat vinden de partijen?</button>
+
+	<div id="parties"></div>
+
+	<script type="text/javascript" src="data.js"></script>
+
+	<script>
+		var nr = 0;
+		var title = document.getElementById('title');
+		var statement = document.getElementById('statement');
+		var parties = document.getElementById('parties');
+
+		// console.log(subjects[nr]);
+
+		title.innerHTML = subjects[nr].title;
+		statement.innerHTML = subjects[nr].statement;
+		parties.innerHTML = subjects[nr].parties[nr].name;
+		parties.innerHTML = subjects[nr].parties[nr].position;
+		parties.innerHTML = subjects[nr].parties[nr].explanation;
+
+		function nextPage() {
+			nr++;
+			title.innerHTML = subjects[nr].title;
+			statement.innerHTML = subjects[nr].statement;
+			parties.innerHTML = subjects[nr].parties[nr];
+		}
+
+		function prevPage() {
+			nr--;	
+			title.innerHTML = subjects[nr].title;
+			statement.innerHTML = subjects[nr].statement;
+			parties.innerHTML = subjects[nr].parties[nr];
+		}
+	</script>
+</body>
+</html>

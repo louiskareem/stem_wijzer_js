@@ -118,21 +118,3 @@ var parties = [
 	{name: "Artikel 1", secular: true, size: 0},
 	{name: "Libertarische Partij", secular: true, size: 0}
 ];
-
-function myFunction () {
-	document.getElementById("title").innerHTML = subjects[0].title;
-	document.getElementById("content").innerHTML = subjects[0].statement;
-	// document.getElementById("parties").innerHTML = subjects[0].parties.name;
-
-}
-
-function displayParties () {
-	document.getElementById("parties").innerHTML = subjects[0].parties;
-}
-
-// var nr = 0;
-// var text = document.getElementById('subject');
-
-// console.log(subjects[nr]);
-
-// text.innerHTML = subjects[nr].title;
