@@ -4,18 +4,27 @@
 	<title>Stem Wijzer</title>
 </head>
 <body>
-	<button onclick="prevPage(); return false;">Back</button>
-	<div id="title"></div>
+	<div class="flex-wrapper">
+		<div class="flex-wrapper__content">
+			<div class="content">
+				<div class="application">
 
-	<div id="statement"></div>
+					<button onclick="prevPage(); return false;">Back</button>
+					<div id="title"></div>
+					<div id="statement"></div>
 
-	<button onclick="nextPage()">Eens</button>
-	<button onclick="nextPage()">Geen van beide</button>
-	<button onclick="nextPage()">Oneens</button>
-	<button onclick="">Sla deze vraag over</button>
-	<button onclick="nextPage()">Wat vinden de partijen?</button>
+					<button id="pro" onclick="nextPage(this)">Eens</button>
+					<button id="ambivalent" onclick="nextPage(this)">Geen van beide</button>
+					<button id="contra" onclick="nextPage(this)">Oneens</button>
+					<button onclick="">Sla deze vraag over</button> 
 
-	<div id="parties"></div>
+					<button onclick="nextPage()">Wat vinden de partijen?</button>
+					<div id="parties"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script type="text/javascript" src="data.js"></script>
 
@@ -24,8 +33,31 @@
 		var title = document.getElementById('title');
 		var statement = document.getElementById('statement');
 		var parties = document.getElementById('parties');
+		var scoreYes = 0;
+		var scoreNo = 0;
+		var scoreNone = 0;
 
-		// console.log(subjects[nr]);
+		var scores = [
+			{name: "VVD", point: 0},
+			{name: "CDA", point: 0},
+			{name: "PVV", point: 0},
+			{name: "D66", point: 0},
+			{name: "GroenLinks", point: 0},
+			{name: "SP", point: 0},
+			{name: "PvdA", point: 0},
+			{name: "ChristenUnie", point: 0},
+			{name: "Partij voor de Dieren", point: 0},
+			{name: "SGP", point: 0},
+			{name: "DENK", point: 0},
+			{name: "Forum voor Democratie", point: 0},
+			{name: "OndernemersPartij", point: 0},
+			{name: "VNL", point: 0},
+			{name: "Nieuwe Wegen", point: 0},
+			{name: "De Burger Beweging", point: 0},
+			{name: "Piratenpartij", point: 0},
+			{name: "Artikel 1", point: 0},
+			{name: "Libertarische Partij", point: 0}
+		];
 
 		title.innerHTML = subjects[nr].title;
 		statement.innerHTML = subjects[nr].statement;
@@ -33,19 +65,41 @@
 		parties.innerHTML = subjects[nr].parties[nr].position;
 		parties.innerHTML = subjects[nr].parties[nr].explanation;
 
-		function nextPage() {
+		function nextPage(elem) {
 			nr++;
 			title.innerHTML = subjects[nr].title;
 			statement.innerHTML = subjects[nr].statement;
-			parties.innerHTML = subjects[nr].parties[nr];
+			parties.innerHTML = subjects[nr].parties[nr].name;
+			parties.innerHTML = subjects[nr].parties[nr].position;
+			parties.innerHTML = subjects[nr].parties[nr].explanation;
+
+			if (elem.id === subjects[nr].parties[nr].position) {
+				scores.point = 0;
+				scores.point++;
+				console.log(scoreYes)
+			} else if (elem.id === subjects[nr].parties[nr].position) {
+				console.log('nooo')
+			} else if (elem.id === subjects[nr].parties[nr].position){
+				console.log('noneee')
+			};
 		}
 
 		function prevPage() {
 			nr--;	
 			title.innerHTML = subjects[nr].title;
 			statement.innerHTML = subjects[nr].statement;
-			parties.innerHTML = subjects[nr].parties[nr];
+			parties.innerHTML = subjects[nr].parties[nr].name;
+			parties.innerHTML = subjects[nr].parties[nr].position;
+			parties.innerHTML = subjects[nr].parties[nr].explanation;
 		}
+
+		// loop through subjects
+		// 		per subject
+		//  		loop  through parties
+		//  			per partie
+		//  				if positions coressponds with choice for that subject then:
+		//  					increment score for that partie
+
 	</script>
 </body>
 </html>

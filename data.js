@@ -118,3 +118,25 @@ var parties = [
 	{name: "Artikel 1", secular: true, size: 0},
 	{name: "Libertarische Partij", secular: true, size: 0}
 ];
+
+var scores = [
+	{name: "VVD", point: 0},
+	{name: "CDA", point: 0},
+	{name: "PVV", point: 0},
+	{name: "D66", point: 0},
+	{name: "GroenLinks", point: 0},
+	{name: "SP", point: 0},
+	{name: "PvdA", point: 0},
+	{name: "ChristenUnie", point: 0},
+	{name: "Partij voor de Dieren", point: 0},
+	{name: "SGP", point: 0},
+	{name: "DENK", point: 0},
+	{name: "Forum voor Democratie", point: 0},
+	{name: "OndernemersPartij", point: 0},
+	{name: "VNL", point: 0},
+	{name: "Nieuwe Wegen", point: 0},
+	{name: "De Burger Beweging", point: 0},
+	{name: "Piratenpartij", point: 0},
+	{name: "Artikel 1", point: 0},
+	{name: "Libertarische Partij", point: 0}
+];
