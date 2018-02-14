@@ -9,7 +9,7 @@
 			<div class="content">
 				<div class="application">
 
-					<button onclick="prevPage(); return false;">Back</button>
+					<button onclick="prevPage()">Back</button>
 					<div id="title"></div>
 					<div id="statement"></div>
 
@@ -20,6 +20,9 @@
 
 					<button>Wat vinden de partijen?</button>
 					<div id="parties"></div>
+
+					<p>Resultaten</p>
+					<div id="scores"></div>
 
 				</div>
 			</div>
@@ -33,7 +36,7 @@
 		var title = document.getElementById('title');
 		var statement = document.getElementById('statement');
 		var parties = document.getElementById('parties');
-		var content = document.getElementById('content');	
+		var scores = document.getElementById('scores');
 		var scores2 = {
 			"PVV": 0,
 			"SP": 0,
@@ -64,31 +67,23 @@
 		parties.innerHTML = subjects[nr].parties[nr].name;
 		parties.innerHTML = subjects[nr].parties[nr].position;
 		parties.innerHTML = subjects[nr].parties[nr].explanation;
-		content.innerHTML = parties[nr].name;
 
 		function nextPage(elem) {
 			nr++;
 			if (nr >= 7) {
-				
+				scores.innerHTML = scores2;
+				// console.log(scores2);
+				alert('The End.')
 			}
-			console.log(parties);
+			// if (nr >= 7) {
+			// 	alert('The End.')
+			// }
 
 			title.innerHTML = subjects[nr].title;
 			statement.innerHTML = subjects[nr].statement;
 			parties.innerHTML = subjects[nr].parties[nr].name;
 			parties.innerHTML = subjects[nr].parties[nr].position;
 			parties.innerHTML = subjects[nr].parties[nr].explanation;
-
-			// if (elem.id === subjects[nr].parties[nr].position) {
-			// 	if (subjects[nr].parties[nr].name === scores[nr].name) {
-			// 		console.log('yessir')
-			// 	}				 
-			// 	console.log('prooo')
-			// } else if (elem.id === subjects[nr].parties[nr].position) {
-			// 	console.log('nooo')
-			// } else if (elem.id === subjects[nr].parties[nr].position){
-			// 	console.log('noneee')
-			// };
 			 
 			subjects[nr].parties.forEach(function(party){
 				if (party.position === elem.id) {
@@ -96,31 +91,22 @@
 					scores2[party.name]++;
 				}
 			});
-			console.log(scores2);
+			// console.log(scores2);
 		}
 
-		// subjects[nr].parties.forEach(function(party){
-		// 	if (party.position === "pro") {
-		// 		scores2[party.name]++;
-		// 	}
-		// });
-		// console.log(scores2);
-
 		function prevPage() {
-			nr--;	
+			nr--;
+			subjects[nr].parties.forEach(function(party){
+				if (scores2[party.name] !== 0) {
+					scores2[party.name]--;
+				}
+			});
 			title.innerHTML = subjects[nr].title;
 			statement.innerHTML = subjects[nr].statement;
 			parties.innerHTML = subjects[nr].parties[nr].name;
 			parties.innerHTML = subjects[nr].parties[nr].position;
 			parties.innerHTML = subjects[nr].parties[nr].explanation;
-
-			// subjects[nr].parties.forEach(function(party){
-			// 	if (party.position === ) {
-			// 		console.log()
-			// 		scores2[party.name]--;
-			// 	}
-			// });
-			// console.log(scores2);
+			console.log(scores2)
 		}
 	</script>
 </body>
