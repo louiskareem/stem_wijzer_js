@@ -32,7 +32,8 @@
 		var nr = 0;
 		var title = document.getElementById('title');
 		var statement = document.getElementById('statement');
-		var parties = document.getElementById('parties');	
+		var parties = document.getElementById('parties');
+		var content = document.getElementById('content');	
 		var scores2 = {
 			"PVV": 0,
 			"SP": 0,
@@ -63,9 +64,15 @@
 		parties.innerHTML = subjects[nr].parties[nr].name;
 		parties.innerHTML = subjects[nr].parties[nr].position;
 		parties.innerHTML = subjects[nr].parties[nr].explanation;
+		content.innerHTML = parties[nr].name;
 
 		function nextPage(elem) {
 			nr++;
+			if (nr >= 7) {
+				
+			}
+			console.log(parties);
+
 			title.innerHTML = subjects[nr].title;
 			statement.innerHTML = subjects[nr].statement;
 			parties.innerHTML = subjects[nr].parties[nr].name;
@@ -92,7 +99,6 @@
 			console.log(scores2);
 		}
 
-
 		// subjects[nr].parties.forEach(function(party){
 		// 	if (party.position === "pro") {
 		// 		scores2[party.name]++;
@@ -107,6 +113,14 @@
 			parties.innerHTML = subjects[nr].parties[nr].name;
 			parties.innerHTML = subjects[nr].parties[nr].position;
 			parties.innerHTML = subjects[nr].parties[nr].explanation;
+
+			// subjects[nr].parties.forEach(function(party){
+			// 	if (party.position === ) {
+			// 		console.log()
+			// 		scores2[party.name]--;
+			// 	}
+			// });
+			// console.log(scores2);
 		}
 	</script>
 </body>
