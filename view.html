@@ -21,7 +21,7 @@
 					<button>Wat vinden de partijen?</button>
 					<div id="parties"></div>
 
-					<p>Resultaten</p>
+					<button id="myBtn">Resultaten tonen</button>
 					<div id="scores"></div>
 
 				</div>
@@ -71,13 +71,13 @@
 		function nextPage(elem) {
 			nr++;
 			if (nr >= 7) {
-				scores.innerHTML = scores2;
-				// console.log(scores2);
-				alert('The End.')
+				document.getElementById("myBtn").addEventListener("click", function(){
+					scores2.toString();
+					scores.innerHTML = scores2;
+					// scores.innerHTML = parties2;
+					console.log(scores2)
+				})
 			}
-			// if (nr >= 7) {
-			// 	alert('The End.')
-			// }
 
 			title.innerHTML = subjects[nr].title;
 			statement.innerHTML = subjects[nr].statement;
