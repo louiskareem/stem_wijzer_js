@@ -18,7 +18,6 @@
 					<button id="contra" onclick="nextPage(this)">Oneens</button>
 					<button id="pass" onclick="nextPage(this)">Sla deze vraag over</button> 
 
-					<button>Wat vinden de partijen?</button>
 					<div id="parties"></div>
 
 					<button id="myBtn">Resultaten tonen</button>
@@ -61,6 +60,7 @@
 			"DENK": 0,
 			"Artikel 1": 0
 		};
+		var txt = "";
 
 		title.innerHTML = subjects[nr].title;
 		statement.innerHTML = subjects[nr].statement;
@@ -69,29 +69,36 @@
 		parties.innerHTML = subjects[nr].parties[nr].explanation;
 
 		function nextPage(elem) {
-			nr++;
-			if (nr >= 7) {
+			if (nr < subjects.length -1){
+				nr++;
+
+				title.innerHTML = subjects[nr].title;
+				statement.innerHTML = subjects[nr].statement;
+				parties.innerHTML = subjects[nr].parties[nr].name;
+				parties.innerHTML = subjects[nr].parties[nr].position;
+				parties.innerHTML = subjects[nr].parties[nr].explanation;
+
+				subjects[nr].parties.forEach(function(party){
+					if (party.position === elem.id) {
+						console.log(elem.id)
+						scores2[party.name]++;
+					}
+				});
+			}else {
+				if (nr < 7) {
+					alert('Please click on the results button');
+				}
+			}
+
+			if (nr == 6) {
 				document.getElementById("myBtn").addEventListener("click", function(){
-					scores2.toString();
-					scores.innerHTML = scores2;
-					// scores.innerHTML = parties2;
+					for (x in scores2) {
+						txt += x + " points: " + scores2[x];
+					}
+					document.getElementById("scores").innerHTML = txt;
 					console.log(scores2)
 				})
 			}
-
-			title.innerHTML = subjects[nr].title;
-			statement.innerHTML = subjects[nr].statement;
-			parties.innerHTML = subjects[nr].parties[nr].name;
-			parties.innerHTML = subjects[nr].parties[nr].position;
-			parties.innerHTML = subjects[nr].parties[nr].explanation;
-			 
-			subjects[nr].parties.forEach(function(party){
-				if (party.position === elem.id) {
-					console.log(elem.id)
-					scores2[party.name]++;
-				}
-			});
-			// console.log(scores2);
 		}
 
 		function prevPage() {
